@@ -1,0 +1,6 @@
+groups:
+- name: dotnetRules
+  interval: 1m
+  rules:
+  - record: dotnet_http_request_duration_avg_ms
+    expr: sum by (http_route) (rate(http_server_request_duration_seconds_sum[1m])) / sum by (http_route) (rate(http_server_request_duration_seconds_count[1m])) * 1000
